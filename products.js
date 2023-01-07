@@ -13,6 +13,7 @@ createApp({
     }
   },
   mounted(){
+    //取出token
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)helenaToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     axios.defaults.headers.common.Authorization = token;
 
@@ -20,6 +21,7 @@ createApp({
     
   },
   methods:{
+    //確認是否為登入狀態
     checkAdmin(){
       axios.post(`${this.url}/api/user/check`)
       .then(()=>{
@@ -30,6 +32,7 @@ createApp({
         window.location = 'login.html';
       })
     },
+    //取得資料
     getData(){
       axios.get(`${this.url}/api/${this.path}/admin/products`)
       .then((res)=>{
@@ -40,6 +43,7 @@ createApp({
         console.log(err.response);
       })
     },
+    //點擊查看細節出現右邊畫面
     openProduct(item){
       this.tempProduct = item;
     }
