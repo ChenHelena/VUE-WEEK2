@@ -25,7 +25,7 @@ createApp({
         window.location="products.html"
       })
       .catch((err)=>{
-        alert(err.response.data);
+        alert(err.response.data.message);
       })
     }
   },
